@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testResult genDate="115-04-18 10:03:18" testCase="basicTurns01GZ">
+    <record rule="status_comp_rule">
+        <result name="navStarStatus" type="long" value="1000" />
+        <result name="message" type="java.lang.String" value="SYS_OK" />
+    </record>
+    <record rule="map_status_comp_rule">
+        <result name="mapDataStatus" type="java.lang.String" value="ok" />
+    </record>
+    <record rule="map_status_comp_rule">
+        <result name="BackwardsCompatible" type="java.lang.String" value="ok" />
+    </record>
+    <record rule="route_comp_rule">
+        <result name="routeStatus" type="java.lang.String" value="ok" />
+        <result name="numRoutes" type="long" value="1" />
+        <result name="numSegments" type="long" value="5" />
+        <result name="selectedRouteID" type="long" value="0" />
+    </record>
+    <record rule="solution_indicies_compare_rule">
+        <result name="BackwardsCompatible" type="java.lang.String" value="ok" />
+    </record>
+    <record rule="segment_comp_rule">
+        <result name="segmentName" type="java.lang.String" value="猎德大道" />
+        <result name="roadType" type="java.lang.String" value="ROAD_ARTERY" />
+        <result name="turnType" type="java.lang.String" value="STAY_RIGHT" />
+        <result name="tightTurn" type="java.lang.String" value="no" />
+        <result name="hov" type="java.lang.String" value="no" />
+        <result name="ipd" type="java.lang.String" value="no" />
+        <result name="speedLimit" type="double" value="60.000000" />
+        <result name="headPoint" type="java.lang.String" value="23.11771,113.33355" />
+        <result name="segmentLength" type="double" value="225.000000" />
+        <result hidden="true" name="shape_points" type="java.lang.String" value="6,23.11771,113.33355,23.11769,113.33355,23.11635,113.33359,23.11610,113.33360,23.11603,113.33358,23.11569,113.33360" />
+        <result hidden="true" name="laneInfo" type="java.lang.String" value="edge: edge: edge: edge: edge: " />
+    </record>
+    <record rule="segment_comp_rule">
+        <result name="segmentName" type="java.lang.String" value="猎德大道" />
+        <result name="roadType" type="java.lang.String" value="ROAD_ARTERY" />
+        <result name="turnType" type="java.lang.String" value="L2L_U_TURN" />
+        <result name="tightTurn" type="java.lang.String" value="no" />
+        <result name="hov" type="java.lang.String" value="no" />
+        <result name="ipd" type="java.lang.String" value="no" />
+        <result name="speedLimit" type="double" value="60.000000" />
+        <result name="headPoint" type="java.lang.String" value="23.11569,113.33360" />
+        <result name="segmentLength" type="double" value="261.000000" />
+        <result hidden="true" name="shape_points" type="java.lang.String" value="5,23.11569,113.33360,23.11515,113.33355,23.11496,113.33356,23.11474,113.33357,23.11334,113.33362" />
+        <result hidden="true" name="laneInfo" type="java.lang.String" value="edge: edge: edge: edge: " />
+    </record>
+    <record rule="segment_comp_rule">
+        <result name="segmentName" type="java.lang.String" value="猎德大道" />
+        <result name="roadType" type="java.lang.String" value="ROAD_ARTERY" />
+        <result name="turnType" type="java.lang.String" value="STAY_RIGHT" />
+        <result name="tightTurn" type="java.lang.String" value="no" />
+        <result name="hov" type="java.lang.String" value="no" />
+        <result name="ipd" type="java.lang.String" value="no" />
+        <result name="speedLimit" type="double" value="60.000000" />
+        <result name="headPoint" type="java.lang.String" value="23.11334,113.33362" />
+        <result name="segmentLength" type="double" value="240.000000" />
+        <result hidden="true" name="shape_points" type="java.lang.String" value="6,23.11334,113.33362,23.11329,113.33386,23.11335,113.33399,23.11450,113.33397,23.11485,113.33395,23.11514,113.33394" />
+        <result hidden="true" name="laneInfo" type="java.lang.String" value="edge: edge: edge: edge: " />
+    </record>
+    <record rule="segment_comp_rule">
+        <result name="segmentName" type="java.lang.String" value="猎德大道" />
+        <result name="roadType" type="java.lang.String" value="ROAD_ARTERY" />
+        <result name="turnType" type="java.lang.String" value="L2L_TURN_LEFT" />
+        <result name="tightTurn" type="java.lang.String" value="no" />
+        <result name="hov" type="java.lang.String" value="no" />
+        <result name="ipd" type="java.lang.String" value="no" />
+        <result name="speedLimit" type="double" value="60.000000" />
+        <result name="headPoint" type="java.lang.String" value="23.11514,113.33394" />
+        <result name="segmentLength" type="double" value="296.000000" />
+        <result hidden="true" name="shape_points" type="java.lang.String" value="6,23.11514,113.33394,23.11521,113.33394,23.11663,113.33392,23.11723,113.33391,23.11762,113.33390,23.11780,113.33390" />
+        <result hidden="true" name="laneInfo" type="java.lang.String" value="edge: edge: edge: edge: edge: " />
+    </record>
+    <record rule="segment_comp_rule">
+        <result name="segmentName" type="java.lang.String" value="花城大道" />
+        <result name="roadType" type="java.lang.String" value="ROAD_ARTERY" />
+        <result name="turnType" type="java.lang.String" value="DESTINATION_AHEAD" />
+        <result name="tightTurn" type="java.lang.String" value="no" />
+        <result name="hov" type="java.lang.String" value="no" />
+        <result name="ipd" type="java.lang.String" value="no" />
+        <result name="speedLimit" type="double" value="60.000000" />
+        <result name="headPoint" type="java.lang.String" value="23.11780,113.33390" />
+        <result name="segmentLength" type="double" value="222.000000" />
+        <result hidden="true" name="shape_points" type="java.lang.String" value="7,23.11780,113.33390,23.11827,113.33388,23.11849,113.33387,23.11853,113.33345,23.11856,113.33303,23.11858,113.33281,23.11862,113.33245" />
+        <result hidden="true" name="laneInfo" type="java.lang.String" value="edge: edge: edge: edge: edge: edge: " />
+    </record>
+</testResult>
