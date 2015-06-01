@@ -10,6 +10,8 @@ widget.resize(250, 150)
 widget.setWindowTitle('simple')
 widget.show()
 
+ignoreList = ['SID', 'SpeedLimit', 'RoadType', 'RoadSubType', 'RoadPriority', 'Tunnel', 'LaneNumber', 'TrafficDirection', 'Gradient', 'TimeZoneIndex', 'IsBoundingEdge']
+
 xmlFile = open('1_CN_BJ_Case_002.ref', 'r')
 root = etree.fromstring(xmlFile.read())
 children = list(root)
@@ -19,7 +21,10 @@ for child in children:
     for node in childNode:
         attributes = node.attrib
         for attrib in attributes:
-            print attrib, '==', attributes[attrib]
+            if attributes[attrib] not in ignoreList:
+                print attrib, '==', attributes[attrib]
+            else:
+                break
         print '---------------'
     print '**************'
 sys.exit(app.exec_())
