@@ -11,6 +11,9 @@ widget.setWindowTitle('simple')
 widget.show()
 
 ignoreList = ['SID', 'SpeedLimit', 'RoadType', 'RoadSubType', 'RoadPriority', 'Tunnel', 'LaneNumber', 'TrafficDirection', 'Gradient', 'TimeZoneIndex', 'IsBoundingEdge']
+rgcCondition = []
+contentCondition = []
+#guidanceCondition = []
 
 xmlFile = open('1_CN_BJ_Case_002.ref', 'r')
 root = etree.fromstring(xmlFile.read())
