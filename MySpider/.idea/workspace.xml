@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67b73f81-9b73-4114-9be4-f7f6a12836c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RegressionResultsSpider/Datatypes/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RegressionResultsSpider/rules/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RegressionResultsSpider/1_CN_BJ_Case_002.out" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../PythonStudy/test.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py" afterPath="$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py" afterPath="$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../PythonStudy/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../PythonStudy/.idea/workspace.xml" />
     </list>
     <ignored path="MySpider.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AutoCheckingSpider.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AutoCheckingSpider.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.8707693">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
               <folding>
                 <element signature="e#22#49#0" expanded="true" />
               </folding>
@@ -51,21 +52,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Content.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py">
+      <file leaf-file-name="1_CN_BJ_Case_002.out" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/1_CN_BJ_Case_002.out">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35076922">
-              <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1_CN_BJ_Case_002.ref" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/1_CN_BJ_Case_002.ref">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Content.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -145,8 +156,8 @@
         <option value="$PROJECT_DIR$/ScrapyTest/tutorial/dmoz_spider.py" />
         <option value="$PROJECT_DIR$/ScrapyTest/HtmlParserTest/Test.py" />
         <option value="$PROJECT_DIR$/ScrapyTest/tutorial/tutorial/spiders/dmoz_spider.py" />
-        <option value="$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py" />
         <option value="$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py" />
+        <option value="$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py" />
       </list>
     </option>
   </component>
@@ -268,8 +279,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/RegressionResultsSpider" />
       <recent name="C:\Users\qyuan\PycharmProjects\MySpider\RegressionResultsSpider" />
+      <recent name="$PROJECT_DIR$/RegressionResultsSpider" />
       <recent name="C:\Users\qyuan\PycharmProjects\MySpider\ScrapyTest\tutorial\tutorial\spiders" />
       <recent name="C:\Users\qyuan\PycharmProjects\MySpider\appidspider" />
       <recent name="C:\Users\qyuan\PycharmProjects\MySpider\spider_1" />
@@ -567,7 +578,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433488791827</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="regression checker">
+      <created>1433745275155</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1433745275155</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -615,28 +632,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/appidspider/appidautomatic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#22#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScrapyTest/tutorial/tutorial/items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ScrapyTest/tutorial/tutorial/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -990,27 +990,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/1_CN_BJ_Case_002.ref">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2923077">
+          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/1_CN_BJ_Case_002.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/AutoCheckingSpider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.8707693">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
           <folding>
             <element signature="e#22#49#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RegressionResultsSpider/Datatypes/Content.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35076922">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
