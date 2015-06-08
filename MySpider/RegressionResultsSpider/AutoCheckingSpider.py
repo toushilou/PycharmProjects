@@ -26,6 +26,7 @@ for child in children:
         for attrib in attributes:
             if attributes[attrib] not in ignoreList:
                 print attrib, '==', attributes[attrib]
+
             else:
                 break
         print '---------------'
