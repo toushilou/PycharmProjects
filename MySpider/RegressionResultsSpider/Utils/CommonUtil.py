@@ -1,9 +1,14 @@
 __author__ = 'qyuan'
 import lxml.etree  as etree
+# import sys
+# sys.path.append("..")
 from Datatypes import Content
+from Datatypes import ContentDict
+from rules.ContentRules import *
 
 def generateReportDic(filePath):
     contentDict = {}
+    P2PPointsindexDict = {}
     #guidanceCondition = []
     xmlFile = open(filePath, 'r')
     root = etree.fromstring(xmlFile.read())
@@ -20,7 +25,9 @@ def generateReportDic(filePath):
             elif nodeName == 'EdgePoint':
                 edgePoint = attributes['value']
         contentDict[edgePoint] = Content.Content(forwardConnectEdge, backwardConnectEdge)
-    return contentDict
+        P2PPointsindexDict[ignoreMidPoints(edgePoint)] = edgePoint
+
+    return contentDict, P2PPointsindexDict
 
 def getReverseKey(key):
     edgeArray = key.split(',')
