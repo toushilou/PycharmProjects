@@ -20,34 +20,35 @@ contentRefDict, contentRefP2PDict = generateReportDic('1_CN_BJ_Case_002.ref')
 contentOutDict, contentOutP2PDict = generateReportDic('1_CN_BJ_Case_002.out')
 
 count = 0
+matchRange = 300
+isMatched = False
 for k, v in contentOutDict.items():
     reverseKey = getReverseKey(k)
     startEndpoints = ignoreMidPoints(k)
     if contentRefDict.has_key(k):
         refValue = contentRefDict.get(k)
         if not refValue.toString() == v.toString():
-            print 'error for key ', k
-            print 'ref is ', refValue.toString()
-            print 'out is ', v.toString()
-            count += 1
+            isMatched = fuzzyMatch(refValue.toString() , v.toString(), matchRange)
+        else:
+            isMatched = True
     elif  contentRefDict.has_key(reverseKey):
         refValue = contentRefDict.get(reverseKey)
         if not refValue.toString() == v.reverseString():
-            print 'error for reverse key: ', reverseKey
-            print 'ref is ', refValue.toString()
-            print 'out is ', v.reverseString()
-            count += 1
-    elif contentRefP2PDict.has_key(startEndpoints):
-        originalPoints = contentRefP2PDict.get(startEndpoints)
-        refValue = contentRefDict.get(originalPoints)
-        if not refValue.toString() == v.toString():
-            print 'error for key in the short mode ', k
-            print 'ref is ', refValue.toString()
-            print 'out is ', v.toString()
-            count += 1
-    else:
-        print 'no match for key ', k
+            isMatched =  fuzzyMatch(refValue.toString() , v.toString(), matchRange)
+        else:
+            isMatched = True
+    if not isMatched:
+        if contentRefP2PDict.has_key(startEndpoints):
+            originalPoints = contentRefP2PDict.get(startEndpoints)
+            refValue = contentRefDict.get(originalPoints)
+            isMatched = (refValue.toString() == v.toString())
+    if not isMatched:
+        print 'Error for key ', k
+        print 'The ref is ', refValue.toString()
+        print 'The out is ', v.toString()
         count += 1
+    else:
+        isMatched = False
 
 print 'the mismach result is ', count
 sys.exit(app.exec_())

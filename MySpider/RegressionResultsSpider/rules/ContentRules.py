@@ -1,4 +1,5 @@
 __author__ = 'qyuan'
+import math
 
 def ignoreMidPoints(edgePoints):
 
@@ -6,8 +7,21 @@ def ignoreMidPoints(edgePoints):
     newEdgePoints = pointsArray[0] + ',' + pointsArray[1] + ',' + pointsArray[-2] + ',' + pointsArray[-1]
     return newEdgePoints
 
-def fuzzyMatch(refEdge, outEdge, range):
+def fuzzyMatch(refEdge, outEdge, matchRange):
+    refEdge = refEdge.replace('|', ',')
+    outEdge = outEdge.replace('|', ',')
+    refArray = refEdge.split(',')
+    outArray = outEdge.split(',')
+    if not len(refArray) == len(outArray):
+        return False
+    outRefArray = zip(refArray, outArray)
 
+    for item in outRefArray:
+        try:
+            if math.fabs(int(item[0]) - int(item[1])) > matchRange:
+                return False
+        except ValueError, e:
+            continue
     return True
 
 if __name__ == '__main__':

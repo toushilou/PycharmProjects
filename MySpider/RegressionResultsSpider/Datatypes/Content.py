@@ -6,13 +6,11 @@ class Content:
         self.backwardConnectEdge = backwardConnectEdge
 
     def toString(self):
-        return 'forwardConnectEdge == ' \
-               + self.forwardConnectEdge \
-               + 'backwardConnectEdge == ' \
+        return self.forwardConnectEdge \
+               + ',' \
                + self.backwardConnectEdge
 
     def reverseString(self):
-        return 'forwardConnectEdge == ' \
-               + self.backwardConnectEdge \
-               + 'backwardConnectEdge == ' \
+        return self.backwardConnectEdge \
+               + ',' \
                + self.forwardConnectEdge
