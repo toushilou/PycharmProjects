@@ -11,7 +11,7 @@ class DoctorInfo:
 
 
 class UserInfo:
-    def __init__(self, id, name, password, date, start, end, docName):
+    def __init__(self, id, name, password, date, start, end, docName, hp_code):
         self.id = id
         self.name = name
         self.password = password
@@ -19,4 +19,5 @@ class UserInfo:
         self.start = start
         self.end = end
         self.docName = docName
+        self.hp_code = hp_code
 

@@ -45,7 +45,7 @@ def loadParagraphInfo():
 
 loadAllDocInfo()
 loadParagraphInfo()
-userinfo = UserInfo('18966865127', '詹惠疏', 'ydd0808', '2015-07-01', '09:00', '10:00', '贺译平')
+userinfo = UserInfo('13991397719', '袁泉', '76861624', '2015-07-01', '09:00', '10:00', '贺同强', 'sxfy')
 docInfo = docInfoDict[userinfo.docName]
 print paragraphDict[userinfo.start]
 r = requests.get('http://my.51durian.com/website/index/init')
@@ -64,7 +64,7 @@ i.show()
 imageText = raw_input("input:")
 params = {'username': userinfo.id, 'password': userinfo.password, 'validateCode': imageText}
 r = requests.get('http://my.51durian.com/website/center/login', params = params, cookies = cookies)
-
+paragragh_id = paragraphDict[userinfo.start].split(',')[0] if userinfo.hp_code == 'sxfy' else paragraphDict[userinfo.start].split(',')[1]
 
 isReady = False
 payload = {'depart_code': docInfo.dept, 'hp_code': 'sxfy', 'depart_name': docInfo.deptName, 'employees_id': docInfo.id, 'employees_name': docInfo.name, 'employees_code': docInfo.code}
@@ -101,7 +101,7 @@ payload = {'see_date': userinfo.date, 'noon_code': '', 'name': userinfo.name,
            'schema_id': reg_id, 'depart_code': docInfo.dept, 'depart_name': docInfo.deptName, 'employees_code': docInfo.code,
            'employees_name': docInfo.name, 'oper_code': oper_code,
            'start_paragraph': userinfo.start, 'end_paragraph': userinfo.end,
-           'paragraph_id':paragraphDict[userinfo.start], 'hp_code': 'sxfy'}
+           'paragraph_id':paragragh_id, 'hp_code': 'sxfy'}
 url ='http://my.51durian.com/website/center/addRegInfo'
 r = requests.post(url, params=payload, cookies = cookies)
 print r.text
