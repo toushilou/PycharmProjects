@@ -65,9 +65,8 @@ imageText = raw_input("input:")
 params = {'username': userinfo.id, 'password': userinfo.password, 'validateCode': imageText}
 r = requests.get('http://my.51durian.com/website/center/login', params = params, cookies = cookies)
 paragragh_id = paragraphDict[userinfo.start].split(',')[0] if userinfo.hp_code == 'sxfy' else paragraphDict[userinfo.start].split(',')[1]
-
 isReady = False
-payload = {'depart_code': docInfo.dept, 'hp_code': 'sxfy', 'depart_name': docInfo.deptName, 'employees_id': docInfo.id, 'employees_name': docInfo.name, 'employees_code': docInfo.code}
+payload = {'depart_code': docInfo.dept, 'hp_code': userinfo.hp_code, 'depart_name': docInfo.deptName, 'employees_id': docInfo.id, 'employees_name': docInfo.name, 'employees_code': docInfo.code}
 pattern = re.compile(r'^reg_a_')
 while not isReady:
     r = requests.post('http://my.51durian.com/website/index/doctorReg', data = payload, cookies = cookies)
@@ -101,7 +100,7 @@ payload = {'see_date': userinfo.date, 'noon_code': '', 'name': userinfo.name,
            'schema_id': reg_id, 'depart_code': docInfo.dept, 'depart_name': docInfo.deptName, 'employees_code': docInfo.code,
            'employees_name': docInfo.name, 'oper_code': oper_code,
            'start_paragraph': userinfo.start, 'end_paragraph': userinfo.end,
-           'paragraph_id':paragragh_id, 'hp_code': 'sxfy'}
+           'paragraph_id':paragragh_id, 'hp_code': userinfo.hp_code}
 url ='http://my.51durian.com/website/center/addRegInfo'
 r = requests.post(url, params=payload, cookies = cookies)
 print r.text
