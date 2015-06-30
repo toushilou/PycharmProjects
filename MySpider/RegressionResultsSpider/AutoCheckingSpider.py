@@ -1,15 +1,15 @@
 __author__ = 'qyuan'
 
-import PyQt4.QtGui as QtGui
-from Utils.CommonUtil import *
-from rules.ContentRules import *
 
 import sys
+import os
+from Utils.CommonUtil import *
+from rules.ContentRules import *
+from MainUI import *
+
 app = QtGui.QApplication(sys.argv)
-widget = QtGui.QWidget()
-widget.resize(250, 150)
-widget.setWindowTitle('simple')
-widget.show()
+mw = MainWindow()
+mw.show()
 
 ignoreList = ['SID', 'SpeedLimit', 'RoadType', 'RoadSubType', 'RoadPriority', 'Tunnel', 'LaneNumber', 'TrafficDirection', 'Gradient', 'TimeZoneIndex', 'IsBoundingEdge']
 rgcCondition = []
