@@ -1,35 +1,58 @@
 __author__ = 'qyuan'
+# coding=utf-8
 import requests
-url = 'http%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2FPiajxSqBRaELj042tUfsS4IUv3wibNLH18vhib0YtmmQ1V7zwvXWPrGPdYgia4qkktIKubXP9KFXzQsWBubGbBg7iag%2F0'.replace('%2F','/')
+import sys
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
+
+url = u'http%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2FPiajxSqBRaELj042tUfsS4IUv3wibNLH18vhib0YtmmQ1V7zwvXWPrGPdYgia4qkktIKubXP9KFXzQsWBubGbBg7iag%2F0'.replace('%2F','/')
 url = url.replace('%3A',':')
 print url
-cookies = {'pgv_pvi': '41287680', 'pgv_pvid	': '9917116262', 'sd_cookie_crttime':	'1430731556250', 'sd_userid':'26151430731556250', 'tencentvideo_face': url, 'tencentvideo_nick': '%E8%A2%81%E6%B3%89', 'tencentvideo_openid': 'o-I78jntfAhcGrpPmw722lIj2sbw'}
+cookies = {}
+cookies['pgv_pvi'] = '41287680'
+cookies['pgv_pvid'] = '9917116262'
+cookies['sd_cookie_crttime'] = '1430731556250'
+cookies['sd_userid'] = '26151430731556250'
+cookies['tencentvideo_face'] = 'http%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2FPiajxSqBRaELj042tUfsS4IUv3wibNLH18vhib0YtmmQ1V7zwvXWPrGPdYgia4qkktIKubXP9KFXzQsWBubGbBg7iag%2F0'
+cookies['tencentvideo_nick'] = '%E8%A2%81%E6%B3%89'
+cookies['tencentvideo_openid'] = 'o-I78jntfAhcGrpPmw722lIj2sbw'
 cafile = 'cacert.pem'
 wxurl = 'https://mp.weixin.qq.com/mp/getappmsgext'
 params = {}
-params['biz'] = 'MTAzMDM2MjI4MQ=='
-params['mid'] = '208749403'
+params['__biz'] = 'MzA4MjA0OTEwMQ=='
+params['mid'] = '221566822'
+params['sn'] = '24843dabf723b6a41e995eb1adfb2453'
 params['idx'] = '1'
-params['scene'] = '%E7%AB%9F%E7%84%B6%E8%BF%98%E6%9C%89%E8%BF%99%E6%A0%B7%E4%B8%80%E9%83%A8%E5%8E%8B%E7%AE%B1%E5%BA%95%E7%9A%84%E5%9B%BD%E4%BA%A7%E7%A5%9E%E4%BD%9C%EF%BC%81'
-params['ct'] = '1435665545'
-params['devicetype'] = 'iPhone'
+params['scene'] = ''
+params['title'] = u'【谜题】智商没有135连个广告都看不懂'
+params['ct'] = '1435723811'
+params['devicetype'] = 'iPhone&nbsp;OS8.3'
+params['version'] = ''
 params['f'] = 'json'
-params['r'] = '0.5127360520418733'
-params['is_need_ad'] = '0'
+params['r'] = '0.3998817664105445'
+params['is_need_ad'] = '1'
 params['comment_id'] = '0'
 params['is_need_reward'] = '0'
-params['both_ad'] = '1'
-params['reward_uin_string'] = '0'
+params['both_ad'] = '0'
+params['reward_uin_count'] = '0'
 params['uin'] = 'MjYxMzkyMDM1'
-params['key'] = 'af154fdc40fed00341d3abe8432854f9704acb3fcab5c2703123bab03f37121c1e14ddb084ad8ff7213df140ea3968b5'
-params['pass_ticket'] = 'rYaHn8iqNubS9Sp%2BJrv1p5pvOi9TOAluBWb0ugcsGA8%3D'
+params['key'] = 'af154fdc40fed003f97328c0686af3643bad92d8140bb4d0e66d7abb9ab41b7e6ddaf8e222498e4b9c254f828e0ee9d8'
+params['pass_ticket'] = 'FpXnhOzYwJ2pazRc2Eq2S4Wpynn7Nitz9WFfNji1POw%3D'
 params['x5'] = '0'
 
 headers = {}
+headers['Host'] = 'mp.weixin.qq.com'
+headers['Accept-Encoding'] ='gzip, deflate'
+headers['Connection'] = 'keep-alive'
+headers['Proxy-Connection'] = 'keep-alive'
+headers['Accept'] = '*/*'
 headers['User-Agent'] = 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12F70 MicroMessenger/6.2.2 NetType/WIFI Language/zh_CN'
+headers['refer'] = 'https://mp.weixin.qq.com/s?__biz=MzA4MjA0OTEwMQ==&mid=221566822&idx=1&sn=24843dabf723b6a41e995eb1adfb2453&key=af154fdc40fed003f97328c0686af3643bad92d8140bb4d0e66d7abb9ab41b7e6ddaf8e222498e4b9c254f828e0ee9d8&ascene=1&uin=MjYxMzkyMDM1&devicetype=iPhone+OS8.3&version=16020211&nettype=WIFI&fontScale=100&pass_ticket=XCB%2Fs1iYM1QAXPAeCumA%2FeiNlw9%2F1Ht5chXwCsp3WmE%3D'
 headers['Accept-Language'] = 'zh-cn'
 headers['X-Requested-With'] = 'XMLHttpRequest'
-r = requests.get(wxurl, headers = headers, params = params, verify = cafile, cookies = cookies)
+r = requests.get(wxurl, headers = headers, params = params, verify = False, cookies = cookies)
+print r.url
+print r.status_code
 print r.text
 
 # import urllib3
