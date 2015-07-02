@@ -3,6 +3,7 @@ __author__ = 'sweety'
 import requests
 import sys
 import threading
+import time
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 from PIL import Image
@@ -67,7 +68,7 @@ class RegisterThread(threading.Thread):
     def run(self):
         # userinfo = UserInfo('15109267910', '王奕可', '131124', '2015-07-08', '08:00', '09:00', '贺译平', 'sxfy')
         docInfo = docInfoDict[self.userinfo.docName]
-        print paragraphDict[self.userinfo.start]
+        #print paragraphDict[self.userinfo.start]
         r = requests.get('http://my.51durian.com/website/index/init')
         #print r._content
         tokenStr =  r.headers['set-cookie']
@@ -79,16 +80,18 @@ class RegisterThread(threading.Thread):
         i = Image.open(StringIO(r.content))
         # txt = tool.image_to_string(i, lang=lang, builder=pyocr.builders.TextBuilder())
         # print 'txt is ', txt
-        i.save('/Users/sweety/Pictures/' + self.userinfo.id + '.jpeg')
+        i.save('/tmp/' + self.userinfo.id + '.jpeg')
         # file=open('/Users/sweety/Pictures/image.jpeg', "wb")
-        imageText = raw_input("input for imageCode for "+ self.userinfo.name + ':')
+        imageText = raw_input("input for imageCode for "+ self.userinfo.id + ':')
         params = {'username': self.userinfo.id, 'password': self.userinfo.password, 'validateCode': imageText}
         r = requests.get('http://my.51durian.com/website/center/login', params = params, cookies = cookies)
         paragragh_id = paragraphDict[self.userinfo.start].split(',')[0] if self.userinfo.hp_code == 'sxfy' else paragraphDict[self.userinfo.start].split(',')[1]
         isReady = False
         deptArray = docInfo.deptName.split('|')
-        if len(deptArray) == 2:
-            docInfo.deptName = deptArray[1]
+        if len(deptArray) == 1:
+            docInfo.deptName = deptArray[0]
+        else:
+            docInfo.deptName = deptArray[0] if self.userinfo.hp_code == 'sxfy' else deptArray[1]
         payload = {'depart_code': docInfo.dept, 'hp_code': self.userinfo.hp_code, 'depart_name': docInfo.deptName, 'employees_id': docInfo.id, 'employees_name': docInfo.name, 'employees_code': docInfo.code}
         pattern = re.compile(r'^reg_a_')
         while not isReady:
@@ -99,10 +102,12 @@ class RegisterThread(threading.Thread):
             for item in reg_id_list:
                 if self.userinfo.date in item['onclick']:
                     reg_id = item['id'][6:]
+                    print 'reg_id = ', reg_id, 'for ', docInfo.name
                     isReady = True
                     break
             if not isReady:
                 print 'The new registration hasn\'t been released for ' + self.userinfo.name
+                time.sleep(10)
 
         if reg_id == None:
             pass
