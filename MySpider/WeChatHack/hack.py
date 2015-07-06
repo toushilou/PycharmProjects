@@ -5,7 +5,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-url = u'http%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2FPiajxSqBRaELj042tUfsS4IUv3wibNLH18vhib0YtmmQ1V7zwvXWPrGPdYgia4qkktIKubXP9KFXzQsWBubGbBg7iag%2F0'.replace('%2F','/')
+url = 'http%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2FPiajxSqBRaELj042tUfsS4IUv3wibNLH18vhib0YtmmQ1V7zwvXWPrGPdYgia4qkktIKubXP9KFXzQsWBubGbBg7iag%2F0'.replace('%2F','/')
 url = url.replace('%3A',':')
 print url
 cookies = {}
@@ -24,9 +24,9 @@ params['mid'] = '221566822'
 params['sn'] = '24843dabf723b6a41e995eb1adfb2453'
 params['idx'] = '1'
 params['scene'] = ''
-params['title'] = u'【谜题】智商没有135连个广告都看不懂'
+params['title'] = '【谜题】智商没有135连个广告都看不懂'
 params['ct'] = '1435723811'
-params['devicetype'] = 'iPhone&nbsp;OS8.3'
+params['devicetype'] = 'iPhone OS8.3'
 params['version'] = ''
 params['f'] = 'json'
 params['r'] = '0.3998817664105445'
@@ -36,7 +36,7 @@ params['is_need_reward'] = '0'
 params['both_ad'] = '0'
 params['reward_uin_count'] = '0'
 params['uin'] = 'MjYxMzkyMDM1'
-params['key'] = 'af154fdc40fed003f97328c0686af3643bad92d8140bb4d0e66d7abb9ab41b7e6ddaf8e222498e4b9c254f828e0ee9d8'
+params['key'] = 'c76941211a49ab582696d28c562bf630f98f6bc5991e451d5febe7539eec5967da70d108bc92fb69c37a1e8aaebfe7d2'
 params['pass_ticket'] = 'FpXnhOzYwJ2pazRc2Eq2S4Wpynn7Nitz9WFfNji1POw%3D'
 params['x5'] = '0'
 
