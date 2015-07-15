@@ -24,13 +24,24 @@ cookies['IPLOC'] = 'CN6101'
 cookies['ABTEST'] = '0|1435634810|v1'
 cookies['weixinIndexVisited'] = '1'
 cookies['_ga'] = 'GA1.2.1719920014.1435720096'
-cookies['SNUID'] = '526480D59FA58524CEAA48DBA0AEB407'
-cookies['ld'] = 'p6VUIkllll2qALdMlllllVQ0g0olllllNvREDkllll9lllllRvoll5@@@@@@@@@@'
+cookies['ld'] = 'z6VUIkllll2qALdMlllllVQ6YlUlllllNvREDkllll9lllllRAoll5@@@@@@@@@@'
+cookies['PHPSESSID'] = '4b5vlhjli7t88upl3dcatj69b5'
+cookies['SUIR'] = '526480D59FA58524CEAA48DBA0AEB407'
+cookies['SNUID'] = '222AF1A4D0D4CB00EF6EB117D16E77B8'
 cookies['sct'] = '25'
+cookies['LSTMV'] = '619%2C75'
+cookies['LCLKINT'] = '5427'
 keywordDic = properties.initPropers('./keyword')
 url = 'http://weixin.sogou.com/weixin'
 client = MongoClient('42.96.141.125',27017)
+db = client.testdb
+collections = db.collection_names()
+# for col in collections:
+#     print col, '\'s count is', db[col].count()
 for k, v in keywordDic.items():
+    if k in collections:
+        print 'skip ', k
+        continue
     queryStr = {}
     queryStr['query'] = v
     for x in xrange(1, 11):
@@ -39,9 +50,15 @@ for k, v in keywordDic.items():
         #print r._content.encode('gbk')
         soup = BeautifulSoup(r._content)
         mp_dic = {}
-        db = client.testdb
+
         col = db[k]
         items = soup.find_all(attrs = 'txt-box')
+        print 'the length of the items is ', len(items)
+        if len(items) == 0:
+            print r._content
+            f = open('./' + k+'.html', 'w')
+            f.write(r._content)
+            f.flush()
         for item in items:
             #print item
             mp_name =  item.find(name = 'h3').text
@@ -56,8 +73,9 @@ for k, v in keywordDic.items():
             except Exception, e:
                 print e.message
                 continue
-            col.insert({'mp_name': mp_name, 'mp_number': mp_number, 'mp_description': mp_description, 'mp_biz': mp_biz})
-            print 'done for ', k, 'page ', x
+            id = col.insert({'mp_name': mp_name, 'mp_number': mp_number, 'mp_description': mp_description, 'mp_biz': mp_biz})
+            print 'id is ', id
+        print 'done for ', k, 'page ', x
         time.sleep(30)
     print 'done for all ', k
     time.sleep(60)
