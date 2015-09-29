@@ -107,7 +107,7 @@ class RegisterThread(threading.Thread):
                     break
             if not isReady:
                 print 'The new registration hasn\'t been released for ' + self.userinfo.name
-                time.sleep(10)
+                time.sleep(1)
 
         if reg_id == None:
             pass
