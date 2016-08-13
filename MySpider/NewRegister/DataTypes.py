@@ -11,13 +11,12 @@ class DoctorInfo:
 
 
 class UserInfo:
-    def __init__(self, id, name, password, date, start, end, docName, hp_code):
-        self.id = id
+    def __init__(self, name, id, password, telephone, docName, date, workType):
+        self.telephone = telephone
         self.name = name
+        self.id = id
+        self.workType = workType
         self.password = password
         self.date = date
-        self.start = start
-        self.end = end
         self.docName = docName
-        self.hp_code = hp_code
 

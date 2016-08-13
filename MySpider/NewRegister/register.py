@@ -8,6 +8,8 @@ import re
 from DataTypes import *
 import codecs
 import json
+import threading
+import time, datetime
 from requests.auth import HTTPBasicAuth
 
 # url = 'http://yy.nwwch.com/website/index/init'
@@ -20,19 +22,34 @@ from requests.auth import HTTPBasicAuth
 cookies = {}
 # cookies['JSESSIONID'] = '1FA407F00CC5D875C46AFAE347D55F7F'
 docInfoDict = {}
+userInfoDict = {}
 allDocName = []
+allUserInfo = []
 
-def loadAllDocInfo():
-    f = codecs.open('docinfo.properties', 'r', encoding='utf-8')
+def loadAllInfo(isDocInfo):
+    if isDocInfo:
+        f = codecs.open('docinfo.properties', 'r', encoding='utf-8')
+    else:
+        f = codecs.open('UserInfo.properties', 'r', encoding='utf-8')
     for line in f:
+        if line[0] == '#':
+            continue
         array = line.split('=')
         if len(array) != 2:
             continue
         infoArray = array[1].split(',')
-        docInfoDict[array[0]] = DoctorInfo(array[0], infoArray[0], infoArray[1], infoArray[2], infoArray[3], infoArray[4].strip('\n'))
-        allDocName.append(array[0])
+        if isDocInfo:
+            docInfoDict[array[0]] = DoctorInfo(array[0], infoArray[0], infoArray[1], infoArray[2], infoArray[3], infoArray[4].strip('\n'))
+            allDocName.append(array[0])
+        else:
+            userInfo = UserInfo(array[0], infoArray[0], infoArray[1], infoArray[2], infoArray[3], infoArray[4], infoArray[5].strip('\n'))
+            allUserInfo.append(userInfo)
 
-loadAllDocInfo()
+
+
+
+loadAllInfo(True)
+loadAllInfo(False)
 
 url = 'http://1.85.2.83/website/index/init'
 r = requests.post(url=url)
@@ -44,8 +61,8 @@ i = Image.open(StringIO(r.content))
 i.save('/tmp/' + 'test.jpeg')
 imageText = raw_input('input for imageCode for :')
 param = {}
-param['username'] = '130203198401271211'
-param['password'] = 'ydd0808'
+param['username'] = '51080219870305392x'
+param['password'] = 'WZMfire0911'
 param['validateCode'] = imageText
 url = 'http://1.85.2.83/website/center/login'
 r = requests.post(url, data=param, cookies=cookies)
@@ -58,7 +75,9 @@ url = 'http://1.85.2.83/website/index/doctorReg'
 # headers['Referer'] = 'http://yy.nwwch.com/website/index/deptDoctor'
 # headers['Upgrade-Insecure-Requests'] = '1'
 
-def getTheropyTime(docmName, url, regTime):
+def getTheropyTime(url, userInfo):
+
+    docmName = userInfo.docName
 
     param = {}
     param['docmId'] = docInfoDict[docmName].docmId
@@ -70,58 +89,78 @@ def getTheropyTime(docmName, url, regTime):
     param['areaId'] = docInfoDict[docmName].areaId
     # auth = HTTPBasicAuth('130203198401271211', 'ydd0808')
 
-    r = requests.post(url=url, data=param, cookies=cookies)
-    pattern = re.compile(r'^regClick')
-    # print r.text
+    startTime = datetime.datetime(2016, 7, 18, 20, 29, 30)
 
-    soup = BeautifulSoup(r.text)
-    aDict = soup.find_all('a', onclick=pattern)
+    while datetime.datetime.now() < startTime:
+        print 'Program not starting yet...'
+        time.sleep(1)
+
+    while True:
+        r = requests.post(url=url, data=param, cookies=cookies)
+        pattern = re.compile(r'^regClick')
+        soup = BeautifulSoup(r.text)
+        aDict = soup.find_all('a', onclick=pattern)
+        validRegDate = False
+        aDict.sort()
+        for regClick in aDict:
+            schmIdInfo = regClick['onclick']
+            firstIndex = schmIdInfo.find('\'')
+            lastIndex = schmIdInfo[firstIndex + 1:].find('\'')
+            schmId = schmIdInfo[firstIndex + 1: firstIndex + lastIndex + 1]
+            date = schmIdInfo[len(schmId) + 13: len(schmId) + 23]
+            index = schmIdInfo.find(docInfoDict[docmName].deptName)
+            workType = schmIdInfo[index + 9: index + 11]
+            if userInfo.date == date and userInfo.workType == workType:
+                validRegDate = True
+                break
+            else:
+                print 'No specific date!'
+        if validRegDate:
+            break
 
 
     url = 'http://1.85.2.83/website/center/querytime'
     param = {}
 
-    for regClick in aDict:
-        schmIdInfo = regClick['onclick']
-        firstIndex = schmIdInfo.find('\'')
-        lastIndex = schmIdInfo[firstIndex + 1:].find('\'')
-        schmId = schmIdInfo[firstIndex + 1: firstIndex + lastIndex + 1]
-        date = schmIdInfo[len(schmId) + 13: len(schmId) + 23]
-        piriod = schmIdInfo[len(schmId) + 40: len(schmId) + 42]
-        index = schmIdInfo.find(docInfoDict[docmName].deptName)
-        type = schmIdInfo[index + 9: index + 11]
-        param['schmId'] = schmId
 
-        subr = requests.post(url, cookies=cookies, params=param)
+    param['schmId'] = schmId
 
-        if len(subr.text) != 0:
-            s = json.loads(subr.text)
-            if regTime == date:
-                regInfo = {}
-                regInfo['schmId'] = schmId
-                regInfo['deptName'] = docInfoDict[docmName].deptName
-                regInfo['docmName'] = docmName
-                regInfo['regDate'] = date
-                regInfo['workType'] = workType
-                regInfo['patientname'] = docInfoDict[docmName].name
-                regInfo['telephone'] = telephone
-                regInfo['identitycard'] = id
-                regInfo['queueNum'] = queueNum
-                regInfo['dateType'] = dateType
-                regInfo['queueDate'] = queueDate
-                regInfo['areaId'] = areaId
-                regInfo['docmId'] = docmId
-                regInfo['deptId'] = deptId
-            print s[0]['dataType']
-            print docmName, date, piriod, s
+    subr = requests.post(url, cookies=cookies, params=param)
+
+    if len(subr.text) != 0:
+        s = json.loads(subr.text)
+        if userInfo.date == date and userInfo.workType == workType:
+            regInfo = {}
+            regInfo['schmId'] = schmId
+            regInfo['deptName'] = docInfoDict[docmName].deptName
+            regInfo['docmName'] = docmName
+            regInfo['regDate'] = date
+            regInfo['workType'] = userInfo.workType
+            regInfo['patientname'] = userInfo.name
+            regInfo['telephone'] = userInfo.telephone
+            regInfo['identitycard'] = userInfo.id
+            regInfo['queueNum'] = s[0]['queueNum']
+            regInfo['dataType'] = s[0]['dataType']
+            regInfo['queueDate'] = s[0]['queueDate']
+            regInfo['areaId'] = docInfoDict[docmName].areaId
+            regInfo['docmId'] = docInfoDict[docmName].docmId
+            regInfo['deptId'] = docInfoDict[docmName].deptId
+            while not addRegInfo(regInfo, cookies):
+                pass
+            # print s[0]['dataType']
+            # print docmName, date, s
 
 def addRegInfo(regInfo, cookies):
     url = 'http://1.85.2.83/website/center/addRegInfo'
 
     r = requests.get(url, params=regInfo, cookies=cookies)
+    print r.text
+
+    return True if r.text[0] == '0' else False
 
 
 
-for docmName in allDocName:
-    getTheropyTime(docmName, url, '')
+for userInfo in allUserInfo:
+    threading.Thread(getTheropyTime(url, userInfo))
+
 

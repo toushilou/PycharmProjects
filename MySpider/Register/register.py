@@ -4,8 +4,8 @@ import requests
 import sys
 import threading
 import time
-reload(sys)
-sys.setdefaultencoding( "utf-8" )
+# reload(sys)
+# sys.setdefaultencoding( "utf-8" )
 from PIL import Image
 # import pyocr
 # import pyocr.builders
@@ -66,7 +66,7 @@ class RegisterThread(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        # userinfo = UserInfo('15109267910', '王奕可', '131124', '2015-07-08', '08:00', '09:00', '贺译平', 'sxfy')
+
         docInfo = docInfoDict[self.userinfo.docName]
         #print paragraphDict[self.userinfo.start]
         r = requests.get('http://my.51durian.com/website/index/init')
@@ -105,6 +105,8 @@ class RegisterThread(threading.Thread):
                     print 'reg_id = ', reg_id, 'for ', docInfo.name
                     isReady = True
                     break
+            isReady = True
+            reg_id = 15060108391239123380
             if not isReady:
                 print 'The new registration hasn\'t been released for ' + self.userinfo.name
                 time.sleep(1)

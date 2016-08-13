@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/fenjibao_data/clean_data" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/fenjibao_data/fund_data" charset="GBK" />
     <file url="file://$PROJECT_DIR$/sotck/stock_basic" charset="GBK" />
     <file url="file://$PROJECT_DIR$/spider_1/106.csv" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
